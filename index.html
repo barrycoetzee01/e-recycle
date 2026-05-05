@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-RECYCLE | Recover. Reuse. Rebuild a Better Future.</title>
+  <meta name="description" content="Trusted e-recycling collection for old appliances and electronics. Free collection of old appliances. WhatsApp only." />
+  <style>
+    :root{
+      --bg:#070b12;
+      --bg2:#0d1320;
+      --panel:#0f1724;
+      --panel-2:#131d2d;
+      --line:rgba(138, 158, 178, 0.18);
+      --text:#eef3f8;
+      --muted:#aab7c7;
+      --green:#84d62f;
+      --green-2:#57b61d;
+      --copper:#c97c3d;
+      --copper-2:#e1a06a;
+      --silver:#d7dde4;
+      --shadow:0 18px 50px rgba(0,0,0,.35);
+      --radius:22px;
+      --radius-sm:16px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,Segoe UI,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(132,214,47,.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(201,124,61,.12), transparent 30%),
+        linear-gradient(180deg, #060a11 0%, #0a111c 45%, #0b121d 100%);
+      line-height:1.5;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%}
+    .container{width:min(var(--max), calc(100% - 32px)); margin:0 auto}
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter: blur(12px);
+      background:rgba(7,11,18,.72);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .logo{
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      position:relative;
+      background:
+        radial-gradient(circle at 35% 35%, rgba(255,255,255,.18), transparent 28%),
+        linear-gradient(145deg, #1a2a12, #0f160d 48%, #111922);
+      border:1px solid rgba(132,214,47,.25);
+      box-shadow: 0 0 0 6px rgba(132,214,47,.06), 0 12px 30px rgba(0,0,0,.35);
+      display:grid;
+      place-items:center;
+      flex:0 0 auto;
+    }
+
+    .logo:before{
+      content:"e";
+      font-size:30px;
+      font-weight:900;
+      color:var(--copper-2);
+      text-shadow:0 0 16px rgba(201,124,61,.24);
+      transform:translateY(-1px);
+    }
+
+    .brand-copy h1{
+      margin:0;
+      font-size:1.2rem;
+      letter-spacing:.06em;
+      color:var(--silver);
+    }
+    .brand-copy p{
+      margin:2px 0 0;
+      font-size:.85rem;
+      color:var(--muted);
+    }
+
+    .nav-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:flex-end;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:800;
+      letter-spacing:.01em;
+      transition:.2s ease;
+      border:1px solid transparent;
+      box-shadow:var(--shadow);
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      background:linear-gradient(135deg, var(--green), var(--green-2));
+      color:#081006;
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,.03);
+      border-color:rgba(255,255,255,.08);
+      color:var(--text);
+    }
+    .btn-copper{
+      background:linear-gradient(135deg, var(--copper-2), var(--copper));
+      color:#22130a;
+    }
+
+    .hero{
+      padding:72px 0 14px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:9px 14px;
+      border-radius:999px;
+      background:rgba(132,214,47,.08);
+      border:1px solid rgba(132,214,47,.16);
+      color:#bfe98c;
+      font-weight:700;
+      font-size:.92rem;
+      margin-bottom:18px;
+    }
+
+    .hero h2{
+      margin:0 0 14px;
+      font-size:clamp(2.25rem, 5vw, 4.4rem);
+      line-height:1.02;
+      letter-spacing:-.03em;
+      max-width:12ch;
+    }
+
+    .hero .sub{
+      font-size:1.12rem;
+      color:var(--muted);
+      max-width:60ch;
+      margin:0 0 24px;
+    }
+
+    .hero-points{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin:0 0 28px;
+    }
+
+    .point{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:18px;
+      padding:10px 16px;
+      color:var(--text);
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .point span{
+      width:26px;
+      height:26px;
+      border-radius:50%;
+      flex:0 0 auto;
+      display:grid;
+      place-items:center;
+      background:rgba(132,214,47,.14);
+      color:var(--green);
+      font-weight:900;
+    }
+
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+    }
+
+    .micro{
+      width:100%;
+      margin-top:12px;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .hero-card{
+      position:relative;
+      border-radius:24px;
+      padding:45px;
+      background:
+        linear-gradient(180deg, rgba(19,29,45,.95), rgba(12,18,28,.96)),
+        linear-gradient(135deg, rgba(132,214,47,.12), rgba(201,124,61,.08));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    .hero-card:before{
+      content:"";
+      position:absolute;
+      inset:-20% auto auto -10%;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(132,214,47,.2), transparent 65%);
+      z-index:-1;
+    }
+
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(201,124,61,.12);
+      border:1px solid rgba(201,124,61,.16);
+      color:#f0b486;
+      font-weight:800;
+      margin-bottom:18px;
+    }
+
+    .showcase{
+      display:grid;
+      gap:14px;
+    }
+
+    .showcase-box{
+      border-radius:22px;
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid rgba(255,255,255,.07);
+      padding:18px;
+    }
+
+    .showcase-box h3{
+      margin:0 0 8px;
+      font-size:1.08rem;
+      color:var(--silver);
+    }
+
+    .showcase-box p{
+      margin:0;
+      color:var(--muted);
+      font-size:.98rem;
+    }
+
+    .phone-pill{
+      margin-top:14px;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:6px;
+      padding:16px 18px;
+      border-radius:18px;
+      background:linear-gradient(90deg, rgba(132,214,47,.12), rgba(201,124,61,.08));
+      border:1px solid rgba(132,214,47,.18);
+    }
+
+    .phone-pill strong{
+      font-size:2rem;
+      line-height:1;
+      letter-spacing:.03em;
+    }
+
+    .phone-pill small{
+      color:#b9e48a;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+
+    .section{
+      padding:30px 0 24px;
+    }
+
+    .section-head{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:20px;
+    }
+
+    .section-head h3{
+      margin:0;
+      font-size:clamp(1.7rem, 3vw, 2.4rem);
+      letter-spacing:-.02em;
+    }
+
+    .section-head p{
+      margin:8px 0 0;
+      color:var(--muted);
+      max-width:66ch;
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .feature{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:22px;
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .feature-icon{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      font-size:1.35rem;
+      margin-bottom:16px;
+      background:linear-gradient(135deg, rgba(132,214,47,.18), rgba(201,124,61,.18));
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .feature h4{
+      margin:0 0 8px;
+      font-size:1.06rem;
+      color:var(--silver);
+    }
+
+    .feature p{
+      margin:0;
+      color:var(--muted);
+      font-size:.98rem;
+    }
+
+    .proof{
+      margin-top:00px;
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:14px;
+    }
+
+    .proof-card{
+      padding:5px;
+      border-radius:18px;
+      background:rgba(255,255,255,.028);
+      border:1px solid rgba(255,255,255,.07);
+      text-align:center;
+    }
+
+    .proof-card strong{
+      display:block;
+      font-size:1.35rem;
+      margin-bottom:4px;
+      color:#dff4c0;
+    }
+
+    .proof-card span{
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .cta-section{
+      padding:42px 0 70px;
+    }
+
+    .cta-card{
+      border-radius:30px;
+      padding:34px;
+      background:
+        linear-gradient(135deg, rgba(132,214,47,.12), rgba(201,124,61,.12)),
+        linear-gradient(180deg, rgba(19,29,45,.98), rgba(11,17,27,.98));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+    }
+
+    .cta-card h3{
+      margin:0 0 10px;
+      font-size:clamp(1.8rem, 3.4vw, 3rem);
+      letter-spacing:-.03em;
+    }
+
+    .cta-card p{
+      margin:0;
+      color:var(--muted);
+      max-width:58ch;
+      font-size:1.05rem;
+    }
+
+    footer{
+      padding:0 0 36px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .foot{
+      border-top:1px solid rgba(255,255,255,.07);
+      padding-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid{
+        grid-template-columns:1fr;
+      }
+      .features{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+      .proof{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 700px){
+      .nav-inner{align-items:flex-start; flex-direction:column}
+      .hero{padding-top:50px}
+      .hero-points,
+      .features,
+      .proof{
+        grid-template-columns:1fr;
+      }
+      .phone-pill strong{font-size:1.55rem}
+      .btn{width:100%}
+      .nav-actions{width:100%}
+      .nav-actions .btn{flex:1 1 100%}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+       <img src="logo.png" alt="E-RECYCLE Logo" class="logo-img">
+       </div>
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="https://wa.me/27774808095" target="_blank" rel="noopener">WhatsApp Us</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Trusted e-recycling collection for old appliances and electronics</div>
+          <h2>Free collection that clears your space and keeps useful materials in circulation.</h2>
+          <p class="sub">
+            We make e-recycling simple. Send your details on WhatsApp, tell us what old appliance or electronic item you want removed, and we arrange collection quickly and professionally. No confusion, no dumping, no hassle.
+          </p>
+
+          <div class="hero-points">
+            <div class="point"><span>✓</span><div><strong>Free collection</strong><br>Old appliances and electronics collected at no cost.</div></div>
+            <div class="point"><span>✓</span><div><strong>Simple process</strong><br>Name, number, address and item details are all we need.</div></div>
+            <div class="point"><span>✓</span><div><strong>Trusted service</strong><br>Clear communication and dependable collection handling.</div></div>
+            <div class="point"><span>✓</span><div><strong>Responsible e-recycling</strong><br>Items are handled with a recovery-first mindset.</div></div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://wa.me/27774808095?text=Hi%20I%20want%20to%20book%20a%20free%20collection.%20My%20name%2C%20address%20and%20appliance%20details%20are%3A" target="_blank" rel="noopener">Book Free Collection</a>
+            <a class="btn btn-copper" href="mailto:erecycle01@gmail.com?subject=E-RECYCLE%20Collection%20Request">Email Us</a>
+          </div>
+          <div class="micro">WhatsApp only. Fast response. Clear booking flow.</div>
+        </div>
+
+        <aside class="hero-card" aria-label="Service overview">
+          <div class="hero-badge">Awareness. Trust. Easy action.</div>
+
+          <div class="showcase">
+            <div class="showcase-box">
+              <h3>How it works</h3>
+              <p>Message us on WhatsApp with your name, phone number, address and the item you want collected. We confirm the details and arrange pickup.</p>
+            </div>
+
+            <div class="showcase-box">
+              <h3>What we collect</h3>
+              <p>Old washing machines, microwaves, pool pumps, fridges, freezers, electronics, household electrical items and more.</p>
+            </div>
+
+            <div class="showcase-box">
+              <h3>Why choose E-RECYCLE</h3>
+              <p>Trusted and reliable. Responsible e-recycling. Free collection of old appliances. Honest service you can trust.</p>
+            </div>
+          </div>
+
+          <div class="phone-pill">
+            <strong>077 480 8095</strong>
+            <small>WhatsApp only please</small>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-card">
+          <h3>Ready to clear the clutter the easy way?</h3>
+          <p>
+            Old appliance or electronics taking up space? Send your details now and let us arrange a smooth, responsible collection. The process is simple, the service is clear, and the next step is easy.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>E-RECYCLE • Recover. Reuse. Rebuild a Better Future.</div>
+      <div>Trusted and reliable • Responsible e-recycling • Honest service you can trust</div>
+    </div>
+  </footer>
+</body>
+</html>
